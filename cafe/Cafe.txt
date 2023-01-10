@@ -1,0 +1,167 @@
+import java.awt.Menu;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Cafe {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		Scanner s1 = new Scanner(System.in);
+		Menu menu = new Menu();
+		Order order = new Order();
+		
+		
+		ArrayList<String> alMenu = new ArrayList<String>();
+		ArrayList<Integer> alPrice = new ArrayList<Integer>();
+		ArrayList<String> alName = new ArrayList<String>(); 
+		ArrayList<Integer> alCount = new ArrayList<Integer>(); 
+		ArrayList<Integer> alSum = new ArrayList<Integer>(); 
+		
+		
+		
+		String job="";
+		
+		System.out.println("카페관리작업을 시작하세요");
+		
+		do {
+			System.out.println("--------------------------------------------------------------");
+			System.out.println("카페관리작업을 입력하시오 : [m:메뉴관리, o:주문관리, s:매출관리, '':프로그램 종료]");
+			job=s.nextLine();
+			
+			if(job.equals("m")) {
+				String mJob="";
+				
+				do {
+					System.out.println("메뉴작업을 선택하시오 : [c:메뉴추가, r:메뉴목록 표시, u:메뉴수정, d:메뉴삭제]");
+					String iJob=s.nextLine();
+					
+					if(iJob.equals("c")) {
+						menu.build();
+					} else if(iJob.equals("r")) {
+						menu.display();							
+					} else if(iJob.equals("u")) {
+						menu.update();				
+					} else if(iJob.equals("d")) {
+						menu.remove();	
+					}	
+				} while(!mJob.equals(""));
+			
+			
+			} else if(job.equals("o")) {
+				String mJob="";
+				
+				do {
+					System.out.println("주문작업을 선택하시오 : [c:주문추가, r:주문목록표시, d:주문삭제]");
+					mJob=s.nextLine();
+					
+					if(mJob.equals("c")) {
+						
+						for(int i=0; i<alMenu.size(); i++) {
+							System.out.println((i+1)+"번 메뉴 - "+alMenu.get(i)+" = "+alPrice.get(i));
+						}
+						
+						System.out.print("원하시는 메뉴번호를 입력하세요 :");
+						int ndx=s1.nextInt();
+						alMenu.get(ndx-1);
+						
+						while(ndx!=-1) {
+							System.out.print("수량을 입력하세요 :");
+							int qty=s1.nextInt();
+							
+							if(qty==-1) break;
+							
+							
+							int total = qty*alPrice.get(ndx-1);
+							alName.add(alMenu.get(ndx-1));
+							alCount.add(qty);
+							alSum.add(total);
+							
+							System.out.println("");
+							System.out.print("나가기 : ");
+							String ex=s.nextLine();
+							
+							if(ex.equals("나가기")) break;	
+							
+							else if(!ex.equals("나가기"))
+							
+							
+							for(int i=0; i<alMenu.size(); i++) {
+								System.out.println((i+1)+"번 메뉴 -"+alMenu.get(i)+" = "+alPrice.get(i));
+							}
+							
+							System.out.println("");
+							System.out.print("원하시는 메뉴번호를 입력하세요 :");
+							ndx=s1.nextInt();
+							alMenu.get(ndx-1);			
+						}
+						
+						
+					} else if(mJob.equals("r")) {
+						int total=0;
+						
+						for(int i=0; i<alName.size(); i++) {
+							System.out.println(alName.get(i)+" X "+alCount.get(i)+" = "+alSum.get(i));
+							total = total+alSum.get(i);
+						}
+						System.out.println("");
+						System.out.println("총 가격 = "+total);
+						
+					} else if(mJob.equals("d")) {
+						
+						for(int i=0; i<alName.size(); i++) {
+							System.out.println((i+1)+"번 메뉴 "+alName.get(i)+" X "+alCount.get(i)+" = "+alSum.get(i));
+						}
+						
+						System.out.print("삭제를 원하시는 메뉴번호를 입력하세요 :");
+						int ndx=s1.nextInt();
+						alMenu.get(ndx-1);
+						
+						while(ndx!=-1 ) {
+							alName.remove(ndx-1);
+							alCount.remove(ndx-1);
+							alSum.remove(ndx-1);
+							
+							System.out.println("");
+							System.out.println(ndx+"번 메뉴가 삭제되었습니다.");
+							
+							
+							System.out.println("");
+							System.out.print("나가기 : ");
+							String ex=s.nextLine();
+							
+							
+							if(ex.equals("나가기")) break;	
+							
+							else if(!ex.equals("나가기"))
+								
+							
+							for(int i=0; i<alName.size(); i++) {
+								System.out.println((i+1)+"번 메뉴 X"+alCount.get(i)+" = "+alSum.get(i));
+							}
+							
+							System.out.print("삭제를 원하시는 메뉴번호를 입력하세요 :");
+							ndx=s1.nextInt();
+							alMenu.get(ndx-1);
+						}
+					}
+				} while(!mJob.equals(""));
+				
+				
+			} else if(job.equals("s")) {
+				System.out.println("매출 관리");
+				System.out.println("");
+				
+				int total=0;
+				for(int i=0; i<alSum.size(); i++) {
+					total = total+alSum.get(i);
+				}
+				System.out.println("매출총액 : "+total+"원");
+			  }
+			
+			
+		} while(!job.equals(""));
+		s.close();
+		s1.close();
+		System.out.println("Program terminated.");
+	}
+}

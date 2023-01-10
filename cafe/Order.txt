@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+
+public class Order {
+	
+	
+	ArrayList<String> alName;   // 메뉴이름
+	ArrayList<Integer> alCount; //메뉴수량
+	ArrayList<Integer> alSum;  // 메뉴총액
+	private Object indexnum;
+	
+	public Order() {
+	    this.alName=	new ArrayList<String>();
+		this.alCount = new ArrayList<Integer>();
+		this.alSum = new ArrayList<Integer>();
+	}
+	void append(String name, int qty) {
+		
+	}
+	void display() {
+		for(int i=0; i<this.Name.size(); i++) {
+            System.out.println((i+"."+this.alNmae.get(i)+ "x"+ this.alCount.get(i+this.alSum.get(i);
+            this.alSum.get(i));
+
+}
+	void delete(int order_num) {
+		 this.alCount.remove(indexnum);
+		   this.alCount.remove(indexnum);
+	}
+	}

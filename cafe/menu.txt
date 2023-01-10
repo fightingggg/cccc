@@ -1,0 +1,6 @@
+Latte,3000
+Mocaa,3500
+Espresso,2500
+Americano,2700
+Cappuccino,3600
+ErlGrey,2800
