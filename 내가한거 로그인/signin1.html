@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <td> <table >
+        <tr>
+            <td colspan=2>로긴아이디</td><td ><input type = "text" id="login" name="login"> </td>
+        </tr>
+        <tr>
+            <td colspan=2>비밀번호</td><td><input type = "text" id="password" name="password"> </td>
+        </tr>
+        <tr>
+            <td colspan=2>비밀번호 확인</td><td><input type = "text" id="passconf" name="passconf"> </td>       
+        </tr>
+        <tr>
+            <td colspan=2>실명</td><td><input type = "text" id= "realname" name="realname"> </td> 
+        </tr>
+        <tr>
+                       
+            <td colspan=2>성별</td><td><input"> 
+            
+            <input type="radio" id="male"  name="male" value="남자" >남
+            <input type="radio" id =female name="male" value="여자">여
+        
+        </td>
+            
+           
+        </tr>
+        <tr>
+            <td colspan=2>모바일</td><td><input type = "type" id="mobile" name="mobile"> </td>
+        </tr>
+        
+        <td colspan=3 align="center" style="text-align: center; color:yellow; background-color: black;>
+        <h3>관심분야</h3>
+        <input type="checkbox" name="interest" value="정치">정치&nbsp;
+        <input type="checkbox" name="interest" value="경제">경제&nbsp;
+        <input type="checkbox" name="interest" value="사회">사회<br>
+        <input type="checkbox" name="interest" value="문화">문화&nbsp;
+        <input type="checkbox" name="interest" value="예술">예술&nbsp;
+        <input type="checkbox" name="interest" value="연예">연예<br>
+        <input type="checkbox" name="interest" value="스포츠">스포츠&nbsp;
+        <input type="checkbox" name="interest" value="부동산">부동산&nbsp;
+       
+    <input type="checkbox" name="interest" value="연예">연예<br><br>
+        <tr>
+            <td colspan=2 align="center"><button id=btnregister>등록</button></td>
+            <td  align="center"><button id=btncancel>취소</button></td>
+        </td>
+        </tr></table>
+   
+    
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $(document)
+    .on('click','#btnregister',function(){
+        login=$('#login').val();
+        password=$('#password').val();
+        passconf=$('#passconf').val();
+        realname=$('#realname').val();
+        gender=$('[name=male]:checked').val();
+        mobile=$('#mobile').val();
+        field=$('[name=interest]:checked').val();
+        alert('로그인:'+login+'\n비밀번호:'+password+'\n비밀번호확인:'+passconf+'\n실명:'+realname+'\n성별:'+gender+'\n모바일:'+mobile+'\n관심분야:'+field)
+        document.location='home1.html';   
+    })
+    .on('click','#btncancel',function(){
+        document.location='home1.html';   
+
+    })
+    
+      
+</script>
+
+</html>

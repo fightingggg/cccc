@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  로그인아이디    <input type="text" id = 'loginid' name = 'loginid'><br>
+   비밀번호        <input type="text" id = 'password' name='password'><br>
+  <button id="login">로그인</button>
+  <button id="cancel">취소</button>
+  <br><a href="signin1.html">회원가입</a>
+    
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $(document)
+    .on('click','#login',function(){
+       id=$('#loginid').val()
+       ps=$('#password').val()
+       alert('아이디'+id+'비밀번호'+password)
+   
+        id=$('#loginid').val('')
+        ps=$('#password').val('')
+        document.location='home1.html'
+    })
+    .on('click','#cancel',function(){
+        document.location='home1.html'
+    })
+      
+       
+    
+
+// let id = document.getElementById('id');
+// let password = document.getElementById('password');
+
+// let button = document.getElementById('show');
+
+// button.addEventListener('click',function(){
+
+//     alert("아이디 : " + id.value + "\n"
+//             + "비밀번호 : " + password.value)
+
+// })
+
+</script>
+
+</html>
