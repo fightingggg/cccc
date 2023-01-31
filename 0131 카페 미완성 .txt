@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        font-size: 20px;
+    }
+    select{
+        style:"width: 120px;"
+    }
+    input, button{
+        font-size: 20px;
+    }
+    table{
+        color: aliceblue;
+        background-color: black;
+    }
+    .line{
+        border: 1px solid rgb(180, 20, 132);
+    }
+    button{
+        background-color: crimson;
+        color: aliceblue;
+    }
+    
+</style>
+<body>
+    <table style="width: 50%;" border=1 align="center">
+        <tr>
+            <td colspan="3" style="text-align: center; color: rgb(240, 240, 248); background-color: rgb(75, 40, 201);">
+                <h1>카페관리</h1></td>
+        </tr>
+        <tr>
+            <td valign="top" align="center" class="line">
+                <table>
+                <tr align="center" style="background-color: rgb(65, 21, 21);">
+                    <td colspan="2"><h3>메뉴목록</h3></td>
+                </tr>
+                <td colspan=2>
+                    <select size="11" style="width: 240px;">
+                    <option name="menubox" value="latee">Latte, 3000</option>
+                    <option name="menubox" value="mocca">Mocca, 3500</option>
+                    <option name="menubox" value="americano">americano, 2500</option>
+                    <option name="menubox" value="espresso">Espresso, 2700</option>
+                    <option name="menubox" value="cappuccino">Cappucpcino, 3600</option>
+                    <option name="menubox" value="greentea">Green Tea, 2800</option>
+                    </select>
+                </td>
+                </tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr></tr>
+                    <td>메뉴명</td><td><input type=text id="name" name="name" readonly style="width: 120px;"></td>
+                </tr>
+                <tr>
+                    <td>수량</td><td><input type="number" id="qty" name="qty" style="width: 120px;" value="1">잔</td>
+                </tr>
+                <tr>
+                    <td>가격</td><td><input type="number" id="price" readonly style="width: 120px;">원</td>
+                </tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr>
+                <tr align="center">
+                    <td colspan="2"><button id="btnS">주문</button>
+                    <button id="btnR">지우기</button></td>
+                </tr>
+                </table>
+           </td>
+           <td valign="top" align="center" class="line">
+                <table>
+                    <tr align="center" style="background-color: rgb(41, 43, 13);">
+                        <td colspan="2"><h3>주문내역</h3></td></tr>
+                    <tr>
+                        <td colspan="2">
+                            <select id="orderbox" size="11" style="width: 240px;">
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                    <tr>
+                        <td>주문금액</td><td><input type="number" id="orderprice" readonly style=" width: 100px;">원</td>
+                    </tr>
+                    <tr>
+                        <td>모바일번호</td><td><input type="tex" id="mobile" name="mobile" style="width: 100px;"></td>
+                    </tr>
+                    <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr>
+                
+                
+                
+                    <tr align="center">
+                        <td colspan="2"><button id="btnO">주문완료</button>
+                        <button id="btnC">취소</button></td>
+                    </tr>
+                </table>
+
+           </td>
+           <td valign="top" align="center" class="line">
+                <table>
+                    <tr align="center" style="background-color: rgb(21, 65, 31);">
+                        <td><h3>매출내역</h3></td>
+                    </tr>
+                        <tr>
+                            <td>
+                                <select  id="final" size="20" style="width: 240px;">
+                                </select>
+                            </td>
+                        </tr>
+                        <tr align="center">
+                            <td><button id="buttnG">새로고침</button></td>
+                        </tr>
+                    </table>
+           </td>
+           </td>
+        </tr>
+        <tr style="background-color: dimgray; color: rgb(243, 241, 241); font-size: 2ch;">
+            
+            <td colspan="3" align="Right">
+                Created by 김준하<br>
+                @CopRight free
+            </td>
+        </tr>
+    </table>
+</body>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+    total=0;
+    $(document)  //(1)
+    .on('click','[name=menubox]',function(){
+        str=$(this).text();
+        ar=str.split(',');
+        ar[0]=ar[0].trim();
+        ar[1]=ar[1].trim();
+        $('#name').val(ar[0]);
+        $('#price').val(ar[1]);
+    }) //(2)
+    .on('change','#qty',function(){
+        count=$('#qty').val();
+        $('#price').val(ar[1]*count);
+    })
+    .on('click','#btnR',function(){ //(3)
+        $('#name').val('');
+        $('#price').val('');
+        $('#qty').val(1);
+    })
+    .on('click','#btnS',function(){//(4)
+        n='메뉴 '+$('#name').val();
+        p='가격 '+$('#price').val();
+        q='수량 '+$('#qty').val();
+        $('#orderbox').append('<option id="menubox" name="menubox">'+n+p+q+'</option>');
+        $('#btnR').trigger('click');
+        arp=p.split('가격 ');
+        arp[1]=parseInt(arp[1]);
+        total=total+arp[1];
+        console.log(total);
+        $('#orderprice').val(total);
+    })
+    .on('click','#btnC',function(){
+        $('#orderprice').val('');
+        $('#mobile').val('');
+    })
+    .on('click','#btnO',function(){
+        time=new Date();
+        t='주문금액 '+$('#orderprice').val()+'원';
+        number='모바일번호 '+$('#mobile').val();
+        $('#final').append('<option id="ordermenubox" name="menubox">'+time+'</option>');
+        $('#final').append('<option id="ordermenubox" name="menubox">'+t+'</option>');
+        $('#final').append('<option id="ordermenubox" name="menubox">'+number+'</option>');
+        $('#final').append('<option id="ordermenubox" name="menubox"></option>');
+        $('#btnC').trigger('click');
+        if($('#mobile').val()==''){
+            $('#final').append('<option id="ordermenubox" name="menubox">------------</option>');
+        }
+    })
+    
+    
+
+
+    
+
+    </script>
+</html>
