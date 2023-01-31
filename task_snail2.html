@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+td {
+    width:40px;
+    height:40px;
+    text-align: center;
+    font-weight: bold;
+}
+</style>
+
+<body>
+
+    <table id="tb" border="1">
+        <tr>
+            <td></td> <td></td> <td></td> <td></td> <td></td>
+        </tr>
+
+        <tr>
+            <td></td> <td></td> <td></td> <td></td> <td></td>
+        </tr>
+
+        <tr>
+            <td></td> <td></td> <td></td> <td></td> <td></td>
+        </tr>
+
+        <tr>
+            <td></td> <td></td> <td></td> <td></td> <td></td>
+        </tr>
+
+        <tr>
+            <td></td> <td></td> <td></td> <td></td> <td></td> 
+        </tr>
+    </table><br><br>
+
+    <button id="snail">클릭</button>
+
+
+</body>
+<script src = "https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+
+$(document)
+// 선생님방법 snail
+/*
+    flag 라는 문자열 변수를 하나 두고,
+    x,y(i,j) 라는 좌표용 변수도 두고,
+    
+    e_limit
+    s_limit
+    w_limit
+    n_limit 이라는 변수도 각각두어서,
+    
+    좌표를 상황에맞게 각각의 limit 로 이동시킴. 그리고나서 
+    좌표가 limit 에 도달하면 flag 의 문자열을 바꿈.
+
+*/
+.on('click','#snail',function(){
+
+   
+    m = $('#tb tr').length;
+    n = $('#tb tr:eq(0) td').length;
+
+
+    x=0;
+    y=0;
+    flag = 'e';
+
+    e_limit = $('#tb tr:eq(0) td').length - 1; //east
+    s_limit = $('#tb tr').length - 1;   //south
+    w_limit = 0;                        //west
+    n_limit = 1;                        //north
+
+
+    for(num=1; num <= m*n ; num++){
+       
+        
+        if(flag=='e'){
+
+            $('#tb tr:eq('+ y +') td:eq('+ x +')').text(num);
+            x++;
+            if(x==e_limit){
+                flag="s"
+                e_limit--;
+            }
+
+        } else if(flag=='s'){
+
+            $('#tb tr:eq('+ y +') td:eq('+ x +')').text(num);
+            y++;
+            if(y==s_limit){
+                flag="w"
+                s_limit--;
+            }
+
+
+        } else if(flag=='w'){
+
+            $('#tb tr:eq('+ y +') td:eq('+ x +')').text(num);
+            x--;
+            if(x==w_limit){
+                flag="n"
+                w_limit++;
+            }
+
+
+        } else if(flag=='n'){
+
+            $('#tb tr:eq('+ y +') td:eq('+ x +')').text(num);
+            y--;
+            if(y==n_limit){
+                flag="e"
+                n_limit++;
+            }
+
+        }
+
+
+
+
+    }
+
+})
+
+
+
+
+
+
+
+</script>
+</html>
