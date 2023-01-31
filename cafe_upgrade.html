@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> cafe upgrade </title>
+</head>
+<style>
+
+body{
+    font-weight: bold;
+}
+
+select{
+    border-radius:10% 10% 10% 10%;
+    border-width:3px;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+select::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+
+.management{
+    width:100%;
+    height:100%;
+    text-align: center;
+}
+.mtd{
+    width:300px;
+    height:400px;
+}
+
+
+
+</style>
+<body>
+    <table border="1">
+        <tr align="center">
+            <td colspan="3"> <h2><b>카페관리</b></h2> </td>
+        </tr>
+        <tr> <!--메뉴관리, 주문관리, 매출관리-->
+
+
+            <!--메뉴관리-->
+            <td style="background-color:rgb(72, 185, 250)" class="mtd"> 
+                <table class="management">
+                    <tr>
+                        <td colspan="2" align="center"><h2>메뉴목록</h2></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" align="center">
+                            <select size="10" id="menuboard">
+                                <option value="americano"> Americano, 3000 </option>
+                                <option value="espresso"> Espresso, 3300 </option>
+                                <option value="grapefruit ade"> GrapefruitAde, 5000 </option>
+                                <option value="green tea"> GreenTea, 3000 </option>
+                                <option value="chocolate"> Chocolate, 4000 </option>
+                                <option value="soy milk latte"> SoyMilkLatte, 3500 </option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>메뉴명</td> <td><input type="text" id="name" name="name" readonly size="10">&nbsp;&nbsp;&nbsp; </td> 
+                    </tr>
+
+                    <tr>
+                        <td>수량</td> <td><input type="number" id="qty" name="qty" style="width:100px" value="1">잔</td>
+                    </tr>
+
+                    <tr>
+                        <td>금액</td> <td><input type="number" id="price" name="price" style="width:100px" value=0>원</td>
+                    </tr>
+
+                    <tr>
+                        <td align="right"><button id="select">주문</td>
+                        <td align="right"><button id="cancel">취소</td>
+                    </tr>
+
+                </table>
+            </td>
+            <!--메뉴관리-->
+            
+            <!--주문관리-->
+            <td style="background-color:rgb(144, 146, 141);" class="mtd"> 
+                <table class="management">
+                    <tr>
+                        <td colspan="2"><h2>주문관리</h2></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">           
+                        <select size="10" id="orderlist" style="width:200px">
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>주문금액</td> <td><input id="sum" type="number" value=0>원</td>
+                    </tr>
+                    <tr>
+                        <td>모바일번호</td> <td><input id="mobile" type="text">번</td>
+                    </tr>
+                    <tr>
+                        <td></td> <td></td>
+                    </tr>
+                    <tr>
+                        <td><button id="btnOrder">주문완료</button></td> 
+                        <td><button id="btnCancel">취소</button></td>
+                    </tr>
+
+                </table>
+            </td>
+            <!-- 주문관리-->
+
+            <!--매출관리-->
+            <td style="background-color:rgb(147, 240, 138)" class="mtd"> 
+                <table class="management">
+                    <tr>
+                        <td colspan="2" align="center"><h2>매출내역</h2></td>
+                    </tr>
+
+                    <tr align="center" name="ta">
+                        <td>
+                            <select size="15" style="width:300px" id="saleslist" >
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center;font-weight:bold">매출총액 :<label id='lbltotal'>0</label>원</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><button id=btnRefresh>새로고침</button></td>
+                    </tr>
+                </table>
+            </td>
+
+
+
+
+        </tr> <!--메뉴관리, 주문관리, 매출관리-->
+
+        <tr style="height:180px;background-color:rgb(250, 62, 62)">
+            <td colspan="3" align="left"><b>Made by MinjaeKang</b></td>
+        </tr>
+        
+    </table>
+
+    
+</body>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(document)
+
+.on('click','#menuboard',function(){
+    str = ( $('#menuboard option:selected').text() );
+    menuname = str.split(",")[0];
+    menuprice = parseInt( str.split(",")[1].trim() ); 
+    allprice = menuprice * $('#qty').val();
+    allprice = parseInt(allprice); //
+    $('#name').val(menuname);
+    $('#price').val(allprice);
+})
+
+.on('change','#qty',function(){
+    $('#menuboard').trigger('click');
+})
+
+.on('click','#select',function(){
+
+    name = $('#name').val();
+    qty = $('#qty').val();
+    price = parseInt( $('#price').val() );
+
+    order = '<option>' + name +", "+ qty + "개, " + price + '원 </option>';
+
+
+    $('#orderlist').append(order);
+
+    a = price
+    b = parseInt($('#sum').val()); 
+    c = a+b;
+    $('#sum').val(c);
+
+    $('#cancel').trigger('click');
+})
+
+.on('click','#cancel',function(){
+
+    $('#name').val("");
+    $('#qty').val(1);
+    $('#price').val(0);
+
+})
+// mobile sum
+.on('click','#btnOrder',function(){
+
+    var current = new Date()
+    hour = current.getHours();
+    min = current.getMinutes();
+
+
+    allprice = $('#sum').val();
+    mobile = $('#mobile').val();
+    if(mobile==""){
+        mobile = "-";
+    }
+    
+    str = '<option>'
+        + hour + "시" + min + "분, "+
+        mobile + "번, " + allprice + "원" 
+        '</option>' 
+    
+    $('#saleslist').append(str);
+    //lbltotal
+
+    nprice = parseInt( $('#sum').val() );
+    fprice = parseInt( $('#lbltotal').text());
+
+    tprice = nprice + fprice
+
+    $('#lbltotal').text(tprice);
+
+
+
+
+    $('#btnCancel').trigger('click');
+})
+
+.on('click','#btnCancel',function(){
+    $('#orderlist').empty();
+    $('#sum').val(0);
+    $('#mobile').val("");
+})
+
+.on('click','#btnRefresh',function(){
+    $('#saleslist').empty();
+    $('#lbltotal').text(0);
+})
+
+
+
+
+// empty 말고 하나하나지우려면
+// $('select option').remove(); 해두됨. 
+
+
+
+
+</script>
+</html>
