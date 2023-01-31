@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="cafe.css">
+    <title>Document</title>
+</head>
+<body style="background-color: black;">
+    <table style="width: 100%; height: 880px;" align="center" border="1">
+        <tr>
+            <td colspan="3" style="text-align: center; color: rgb(240, 240, 248); background-color: rgb(75, 40, 201);">
+                <h1>카페관리</h1></td>
+        </tr>
+        <tr>
+            <td valign="top" align="center" class="line" valign="middle">
+                <table class="line">
+                    <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr align="center" valign="middle"  class="hedsize">
+                    <td colspan="2"><h3>메뉴목록</h3></td>
+                </tr>
+                <td colspan=2 valign="bottom">
+                    <select size="11" class="bodysize">
+                    <option name="menubox" value="latee">Latte, 3000</option>
+                    <option name="menubox" value="mocca">Mocca, 3500</option>
+                    <option name="menubox" value="americano">americano, 2500</option>
+                    <option name="menubox" value="espresso">Espresso, 2700</option>
+                    <option name="menubox" value="cappuccino">Cappucpcino, 3600</option>
+                    <option name="menubox" value="greentea">Green Tea, 2800</option>
+                    </select>
+                </td>
+                </tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr></tr>
+                    <td>메뉴명</td><td><input type=text id="name" name="name" readonly style="width: 120px;"></td>
+                </tr>
+                <tr>
+                    <td>수량</td><td><input type="number" id="qty" name="qty" style="width: 120px;" value="1">잔</td>
+                </tr>
+                <tr>
+                    <td>가격</td><td><input type="number" id="price" readonly style="width: 120px;">원</td>
+                </tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><tr><td></td></tr><tr></tr><tr><td></td></tr><tr></tr>
+                <tr>
+                <tr align="center">
+                    <td colspan="2"><button id="btnS">주문</button>
+                    <button id="btnR">지우기</button></td>
+                </tr>
+                </table>
+           </td>
+           <td valign="top" align="center" class="line">
+                <table class="line">
+                    <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                    <tr align="center" class="hedsize">
+                        <td colspan="2"><h3>주문내역</h3></td></tr>
+                    <tr>
+                        <td colspan="2" class="bodysize">
+                            <select id="orderbox" size="11" class="bodysize">
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                    <tr>
+                        <td>주문금액</td><td><input type="number" id="orderprice" readonly style=" width: 100px;">원</td>
+                    </tr>
+                    <tr>
+                        <td>모바일번호</td><td><input type="tex" id="mobile" name="mobile" style="width: 100px;"></td>
+                    </tr>
+                    <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr>
+                    <tr align="center">
+                        <td colspan="2"><button id="btnO">주문완료</button>
+                        <button id="btnC">취소</button></td>
+                    </tr>
+                </table>
+           </td>
+           <td valign="top" align="center" class="line">
+                <table class="line">
+                    <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                    <tr align="center" class="hedsize">
+                        <td><h3>매출내역</h3></td>
+                    </tr>
+                        <tr>
+                            <td>
+                                <select  id="final" size="20" class="bodysize">
+                                </select>
+                            </td>
+                        </tr>
+                        <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr>
+                        <tr align="center">
+                            <td>매출총액 &nbsp;&nbsp;<input type="text" id="totaldar" name="totaldar" style="width: 100px;"></td>
+                        </tr>
+                        <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+                <tr><td></td></tr><tr><td></td></tr>
+                        <tr align="center">
+                            <td><button id="buttnG">새로고침</button></td>
+                        </tr>
+                    </table>
+           </td>
+           </td>
+        </tr>
+        <tr style="background-color: rgb(10, 2, 2); color: rgb(243, 241, 241); font-size: 2ch;">
+            
+            <td colspan="3" align="Right">
+                Created by 김준하<br>
+                @CopRight free
+            </td>
+        </tr>
+    </table>
+</body>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="cafe.js"></script>
+
+</html>

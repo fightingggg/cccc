@@ -1,0 +1,34 @@
+
+    body{
+        font-size: 20px;
+    }
+    select{
+        width: 120px;
+        height: 200px;
+        
+    }
+    input, button{
+        font-size: 20px;
+    }
+    table{
+        color: aliceblue;
+        background-color: black;
+    }
+    .line{
+        
+        background-color: blueviolet;
+    }
+    button{
+        background-color: rgb(243, 8, 172);
+        color: aliceblue;
+    }
+    .hedsize{
+        height: 100px;
+        background-color: rgb(65, 21, 52)
+    }
+    .bodysize{
+        width: 250px;
+        background-color: rgb(243, 247, 247);
+        
+    }
+    
