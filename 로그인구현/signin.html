@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table  align="center" valign="middle" height="300px" border="1">
+        <tr>
+            <td align="left">
+                로긴아이디<input type="text" id="idin" name="idin">
+            </td>
+        </tr>
+        <tr>
+            <td align="left">
+      비밀번호&nbsp;&nbsp;&nbsp;<input type="text" id="pasin" name="pasin"> <br>   
+    </td>
+</tr>  
+<tr>
+    <td align="left">
+      비밀번호확인<input type="text" id="cpasin" name="pasin"><br>
+    </td>
+</tr>  
+<tr>
+    <td align="left">
+        실명&nbsp;&nbsp;&nbsp;<input type="text" id="real" name="pasin"><br>
+    </td>
+</tr>  
+<tr>
+    <td align="left">
+        성별&nbsp;&nbsp;&nbsp;<input type="radio" id="rMale" name="rMale" value="남성">남성</in ><input type="radio" id="rFemale" name="rMale" value="여성">여성<br>
+    </td>
+</tr>
+<tr>
+    <td align="left">
+        모바일&nbsp;&nbsp;&nbsp;<input type="text" id="mobile" name="pasin"><br>
+    </td>
+</tr>
+<tr>
+    <td align="left">
+        관심분야<br>
+<input type="checkbox" name="interest" value="정치">정치&nbsp;
+    <input type="checkbox" name="interest" value="경제">경제&nbsp;
+    <input type="checkbox" name="interest" value="사회">사회<br>
+    <input type="checkbox" name="interest" value="문화">문화&nbsp;
+    <input type="checkbox" name="interest" value="종교">종교&nbsp;
+    <input type="checkbox" name="interest" value="스포츠">스포츠<br>
+    <input type="checkbox" name="interest" value="제테크">제테크&nbsp;
+    <input type="checkbox" name="interest" value="IT">IT&nbsp;
+    <input type="checkbox" name="interest" value="연예">연예<br><br>
+</td>
+</tr>
+<tr>
+    <td align="center">
+      <button style="height: 40px; width: 100;" id="sh">등록</button>
+      <button style="height: 40px; width: 100;" id="cch">취소</button><br>
+    </td>
+</tr>
+</body>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $(document)
+    .on('click','[name=interest]',function(){
+        str='';
+        for(i=0; i<$('[name=interest]').length; i++){
+            let ptr = '[name=interest]:eq('+i+')';
+            if($(ptr).prop('checked')){
+               str+=','+ $(ptr).val();
+            }
+        }
+    })
+    .on('click','#sh',function(){
+        id=$('#idin').val();
+        ps=$('#pasin').val();
+        cps=$('#cpasin').val();
+        real=$('#real').val();
+        gender=$('[name=rMale]').val();
+        mobile=$('#mobile').val();
+        
+        alert('아이디: '+id+'\n비밀번호: '+ps+'\n비밀번호확인: '+cps+'\n실명: '+real+'\n성별: '+gender+'\n모바일: '+mobile+'\n관심분야: '+str);
+        id=$('#idin').val('');
+        ps=$('#pasin').val('');
+        document.location='home.html';
+    }) 
+    .on('click','#cch',function(){
+        document.location='homelogin.html';
+        
+    })
+</script>
+</html>
