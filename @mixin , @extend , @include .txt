@@ -1,0 +1,72 @@
+물론이죠! SCSS에서 @mixin, @extend, 그리고 @include는 스타일의 재사용과 조직을 돕는 중요한 기능들입니다. 각각에 대해 자세히 알아보겠습니다.
+
+@mixin
+@mixin은 재사용 가능한 스타일 블록을 정의하는 방법입니다. 믹스인은 변수를 인수로 받을 수 있어, 동일한 스타일 패턴에 서로 다른 값을 적용할 수 있습니다.
+
+예시:
+
+@mixin button-style($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.primary-button {
+  @include button-style(blue, white);
+}
+
+.secondary-button {
+  @include button-style(green, black);
+}
+
+여기서 button-style 믹스인은 두 개의 인수를 받아, 버튼에 대한 공통 스타일을 정의합니다. @include를 사용하여 믹스인을 특정 선택자에 적용합니다.
+
+@extend
+@extend는 한 선택자의 모든 스타일을 다른 선택자에 상속할 때 사용합니다. 기존 클래스의 스타일을 확장하거나 변형할 때 유용합니다.
+
+예시:
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.success-button {
+  @extend .button;
+  background-color: green;
+  color: white;
+}
+
+.error-button {
+  @extend .button;
+  background-color: red;
+  color: white;
+}
+
+여기서 .button 클래스의 스타일은 .success-button과 .error-button 클래스에 상속됩니다. @extend를 사용하면 중복 코드를 줄이고 효율적으로 작업할 수 있습니다.
+
+@include
+@include는 믹스인을 실제로 적용할 때 사용하는 지시어입니다. 믹스인을 정의할 때 @mixin을 사용하고, 그 믹스인을 특정 선택자에 적용할 때 @include를 사용합니다.
+
+예시:
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.custom-list {
+  @include reset-list;
+  li {
+    padding: 5px;
+  }
+}
+reset-list 믹스인은 목록의 여백, 패딩, 목록 스타일을 재설정합니다. @include를 사용하여 ul.custom-list에 이 믹스인을 적용합니다.
+
+결론
+@mixin: 재사용 가능한 스타일 블록을 정의합니다.
+@extend: 한 선택자의 스타일을 다른 선택자에 상속합니다.
+@include: 정의된 믹스인을 특정 선택자에 적용합니다.
+이러한 기능들은 코드의 중복을 줄이고, 읽기 쉽고 유지보수하기 쉬운 SCSS를 작성하는 데 도움이 됩니다.
